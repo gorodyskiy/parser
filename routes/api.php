@@ -29,7 +29,7 @@ Route::middleware('guest')->group(function () {
         ->name('verification.verify');
 });
 
-// Route::middleware(['auth:sanctum', 'verified'])->group(function () {
+Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::post('/price/subscribe', [PriceController::class, 'subscribe'])
         ->name('price.subscribe');
     Route::post('/price/unsubscribe', [PriceController::class, 'unsubscribe'])
@@ -39,4 +39,4 @@ Route::middleware('guest')->group(function () {
         ->name('user.logout');
     Route::delete('/user/', [UserController::class, 'delete'])
         ->name('user.delete');
-// });
+});
