@@ -54,3 +54,6 @@ Host: `http://localhost/api`\
 Endpoint: `/user`\
 Method: `DELETE`\
 Authorization: `Bearer {token}`
+
+## To do:
+- Use [OLX API](https://developer.olx.ua/api/doc)
