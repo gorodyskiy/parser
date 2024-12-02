@@ -13,7 +13,7 @@
 3. `cd parser`
 4. `yes | cp .env.example .env`
 5. `docker compose up --build -d`
-6. `docker exec app /bin/bash -c 'composer install ; php artisan migrate ; php artisan db:seed'`
+6. `docker exec app /bin/bash -c 'composer install ; php artisan migrate'`
 
 
 ## API requests:
