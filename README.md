@@ -9,8 +9,8 @@
 
 ## Installation:
 1. `git clone https://github.com/gorodyskiy/parser.git`
-2. `chmod 777 orders && chmod -R 777 orders/storage && chmod -R 777 orders/bootstrap/cache`
-3. `cd orders`
+2. `chmod 777 parser && chmod -R 777 parser/storage && chmod -R 777 parser/bootstrap/cache`
+3. `cd parser`
 4. `yes | cp .env.example .env`
 5. `docker compose up --build -d`
 6. `docker exec app /bin/bash -c 'composer install ; php artisan migrate ; php artisan db:seed'`
