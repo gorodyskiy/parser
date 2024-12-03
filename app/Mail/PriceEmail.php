@@ -5,6 +5,7 @@ namespace App\Mail;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
+use Illuminate\Mail\Mailables\Address;
 use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
@@ -12,6 +13,11 @@ use Illuminate\Queue\SerializesModels;
 class PriceEmail extends Mailable
 {
     use Queueable, SerializesModels;
+
+    /**
+     * @var Collection
+     */
+    private $data;
 
     /**
      * Create a new message instance.
@@ -24,21 +30,6 @@ class PriceEmail extends Mailable
     }
 
     /**
-     * Build email template.
-     * 
-     * @return self
-     */
-    public function build()
-    {
-        return $this->subject('RPrice has been changed')
-            ->view('mail.price', [
-                'link' => $this->data->link,
-                'amount' => $this->data->amount,
-                'currency' => $this->data->currency,
-            ]);
-    }
-
-    /**
      * Get the message envelope.
      * 
      * @return Envelope
@@ -46,6 +37,7 @@ class PriceEmail extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
+            from: new Address('noreply@parser.local', 'Price Parser'),
             subject: 'Price has been changed',
         );
     }
@@ -59,6 +51,11 @@ class PriceEmail extends Mailable
     {
         return new Content(
             view: 'mail.price',
+            with: [
+                'link' => $this->data->link,
+                'amount' => $this->data->amount,
+                'currency' => $this->data->currency,
+            ],
         );
     }
 
@@ -66,7 +63,6 @@ class PriceEmail extends Mailable
      * Get the attachments for the message.
      *
      * @return array
-
      */
     public function attachments(): array
     {

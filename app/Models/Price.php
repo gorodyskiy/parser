@@ -34,6 +34,7 @@ class Price extends Model
         'link',
         'amount',
         'type',
+        'currency',
     ];
 
     /**
@@ -76,7 +77,10 @@ class Price extends Model
     }
 
     /**
+     * Scope for "olx" type with users.
      * 
+     * @param Builder $query
+     * @return Builder
      */
     public function scopeOlx($query)
     {

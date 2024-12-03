@@ -55,7 +55,7 @@ abstract class PriceAbstract
      * @param string $url
      * @return string|false
      */
-    private function parse(string $url): ?string
+    public function parse(string $url): ?string
     {
         try {
             libxml_use_internal_errors(true);

@@ -33,7 +33,7 @@ class PriceController extends Controller
             'link' => $request->link,
             'type' => $this->getType($request->link), 
         ]);
-        $price->users()->attach($this->user_id);
+        $price->users()->syncWithoutDetaching($this->user_id);
 
         return response()->json([
             'success' => true,
